@@ -1,13 +1,9 @@
+
 ui <- dashboardPage(
   help = NULL,
   dark = NULL,
   header = dashboardHeader(
-    actionButton(
-      inputId = "update_countries_modal",
-      label = "Data Preprocessing",
-      style = "margin-left: 33px; position: absolute;",
-      icon = icon("database")
-    ),
+    mod_preprocess_ui("preprocess_module"),
     title = div(class = "custom-title", "Interactive Biodiversity Insights"),
     titleWidth = "100%"
   ),
@@ -19,17 +15,6 @@ ui <- dashboardPage(
       tags$script(src = "js/custom.js")
     ),
     fluidPage(
-      shinyjs::hidden(
-        absolutePanel(
-          id = "html_panel",
-          div(
-            class = "header",
-            tags$b("Species in the selected area"),
-            actionButton("close_list_occurences", "x")
-          ), br(),
-          shinycssloaders::withSpinner(uiOutput("species_area_list"), type = 8)
-        )
-      ),
       fluidRow(
         column(
           width = 4,
@@ -55,47 +40,12 @@ ui <- dashboardPage(
               )
             ),
             br(),
-            pickerInput(
-              "species_name", "Species Name",
-              choices = species_name_choices,
-              selected = species_name_choices,
-              multiple = TRUE,
-              options = list(
-                `live-search` = TRUE,
-                `actions-box` = TRUE,
-                `selected-text-format` = "count",
-                `count-selected-text` = "{0}/{1} species"
-              ),
-              choicesOpt = list(
-                content = stringr::str_trunc(species_name_choices, width = 38)
-              )
-            ),
-            pickerInput("year_filter", "Year(s)",
-                        choices = year_choices,
-                        selected = year_choices,
-                        multiple = TRUE,
-                        options = list(
-                          `live-search` = TRUE,
-                          `actions-box` = TRUE,
-                          `selected-text-format` = "count",
-                          `count-selected-text` = "{0}/{1} years"
-                        )
-            ),
-            pickerInput(
-              "month_filter", "Month(s)",
-              choices = month_choices,
-              selected = month_choices,
-              multiple = TRUE,
-              options = list(
-                `actions-box` = TRUE
-              )
-            ),
-            actionButton(
-              inputId = "filter_btn",
-              label = "Filter Data",
-              icon = icon("filter")
-            ),
-            uiOutput("num_occurrences", style = "padding-top: 15px;")
+            mod_filter_ui(
+              id = "filter_module",
+              month_choices = month_choices,
+              year_choices = year_choices,
+              species_name_choices = species_name_choices
+            )
           )
         ),
         column(
@@ -120,7 +70,7 @@ ui <- dashboardPage(
             div(
               id = "leaflet_map_container",
               shinycssloaders::withSpinner(
-                leafletOutput("leaflet_map", height = "650px"),
+                mod_map_ui("map_module"),
                 type = 8
               )
             ),
@@ -144,13 +94,13 @@ ui <- dashboardPage(
                 "Analyze species occurrences over time with an",
                 "interactive line plot.", tags$b("Click on a specific year"),
                 "to filter data on it, providing a detailed temporal analysis of",
-                "species observationsZz"
+                "species observations"
               )
             ),
             div(
               id = "occurrences_year_container",
               shinycssloaders::withSpinner(
-                highchartOutput("occurrences_year"), type = 8
+                mod_charts_ui("charts_module_year"), type = 8
               )
             ),
             uiOutput("occurrences_year_placeholder")
@@ -177,7 +127,7 @@ ui <- dashboardPage(
             div(
               id = "occurrences_month_container",
               shinycssloaders::withSpinner(
-                highchartOutput("occurrences_month"), type = 8
+                mod_charts_ui("charts_module_month"), type = 8
               )
             ),
             uiOutput("occurrences_month_placeholder")
@@ -195,8 +145,7 @@ ui <- dashboardPage(
             collapsible = FALSE,
             div(
               h3("Detailed Species Occurrences Data"),
-              downloadButton("download_data", "Download Filtered Data"),
-              DTOutput("filtered_data")
+              mod_table_ui("table_module")
             )
           )
         )

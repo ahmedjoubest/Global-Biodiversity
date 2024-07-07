@@ -30,13 +30,13 @@ body::-webkit-scrollbar {
 body,
 .container-fluid,
 .row,
-#html_panel,
+#map_module-html_panel,
 div[role="listbox"] {
   overflow-x: hidden;
 }
 
 /* Customize scrollbar for #html_panel */
-#html_panel {
+#map_module-html_panel {
   &::-webkit-scrollbar {
     width: 10px;
     background: #f1f1f1;
@@ -66,8 +66,8 @@ div[role="listbox"] {
   border-bottom: none;
 }
 
-#download_data {
-  float: right !important;
+#table_module-download_data {
+  float: right !important; /* TODO: Avoid hard coding of the ns! -*/
 }
 
 .dataTables_filter {
@@ -150,27 +150,23 @@ button {
   }
 }
 
-/* HTML panel styling */
-#html_panel {
+/* HTML panel styling -*/
+/* TODO: Avoid hard coding of the ns! -*/
+#map_module-html_panel {
   opacity: 0.45;
   transition: opacity 0.3s;
   background-color: white;
   padding: 10px;
   z-index: 5;
   overflow-y: scroll;
-  top: 200px;
-  right: 65px;
-  width: 18%;
-  height: 570px;
+  top: 15px;
+  right: 12px;
+  width: 29%;
+  height: 610px;
 
   &:hover {
     opacity: 1;
   }
-}
-
-/* Dropup menu styling */
-.dropup .dropdown-menu {
-  z-index: 1100;
 }
 
 .bg-light.no-data {
