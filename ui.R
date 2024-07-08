@@ -1,155 +1,20 @@
 
-ui <- dashboardPage(
-  help = NULL,
-  dark = NULL,
-  header = dashboardHeader(
-    mod_preprocess_ui("preprocess_module"),
-    title = div(class = "custom-title", "Interactive Biodiversity Insights"),
-    titleWidth = "100%"
-  ),
-  sidebar = dashboardSidebar(disable = TRUE),
-  body = dashboardBody(
-    useShinyjs(),
-    tags$head(
-      tags$link(rel = "stylesheet", type = "text/css", href = "css/styles.css"),
-      tags$script(src = "js/custom.js")
-    ),
-    fluidPage(
-      fluidRow(
-        column(
-          width = 4,
-          bs4Card(
-            title = "",
-            width = 12,
-            height = "auto",
-            solidHeader = TRUE,
-            collapsible = FALSE,
-            div(
-              class = "selector-container",
-              span(
-                class = "selector-text",
-                p(
-                  "This dashboard visualizes ", tags$b("biodiversity data"),
-                  " with a focus on species occurrences",
-                  " within a ", tags$b("selected area"), ". It includes an ",
-                  "interactive map displaying the locations of ",
-                  "species occurrences, allowing users to explore ",
-                  "spatial patterns, spatial patterns as well as",
-                  tags$b("other visualizations"), "."
-                )
-              )
-            ),
-            br(),
-            mod_filter_ui(
-              id = "filter_module",
-              month_choices = month_choices,
-              year_choices = year_choices,
-              species_name_choices = species_name_choices
-            )
-          )
-        ),
-        column(
-          width = 8,
-          bs4Card(
-            title = "",
-            width = 12,
-            height = "auto",
-            solidHeader = TRUE,
-            collapsible = FALSE,
-            div(
-              class = "selector-container",
-              span(
-                class = "selector-text",
-                p(
-                  "Explore species observations with an",
-                  "interactive map. Use the ",
-                  tags$b("selector tool"), " to draw a specific area."
-                )
-              )
-            ),
-            div(
-              id = "leaflet_map_container",
-              shinycssloaders::withSpinner(
-                mod_map_ui("map_module"),
-                type = 8
-              )
-            ),
-            uiOutput("leaflet_map_placeholder")
-          )
-        )
-      ),
-      fluidRow(
-        column(
-          width = 6,
-          bs4Card(
-            title = "",
-            width = 12,
-            height = "auto",
-            solidHeader = TRUE,
-            collapsible = FALSE,
-            div(
-              class = "selector-container",
-              span(
-                class = "selector-text plot_text",
-                "Analyze species occurrences over time with an",
-                "interactive line plot.", tags$b("Click on a specific year"),
-                "to filter data on it, providing a detailed temporal analysis of",
-                "species observations"
-              )
-            ),
-            div(
-              id = "occurrences_year_container",
-              shinycssloaders::withSpinner(
-                mod_charts_ui("charts_module_year"), type = 8
-              )
-            ),
-            uiOutput("occurrences_year_placeholder")
-          )
-        ),
-        column(
-          width = 6,
-          bs4Card(
-            title = "",
-            width = 12,
-            height = "auto",
-            solidHeader = TRUE,
-            collapsible = FALSE,
-            div(
-              class = "selector-container",
-              span(
-                class = "selector-text plot_text",
-                "Examine species occurrences over time with an",
-                "interactive bar plot.", tags$b("Click on a specific month"),
-                "to filter data on it, providing a detailed temporal analysis of",
-                "species observations."
-              )
-            ),
-            div(
-              id = "occurrences_month_container",
-              shinycssloaders::withSpinner(
-                mod_charts_ui("charts_module_month"), type = 8
-              )
-            ),
-            uiOutput("occurrences_month_placeholder")
-          )
-        )
-      ),
-      fluidRow(
-        column(
-          width = 12,
-          bs4Card(
-            title = "",
-            width = 12,
-            height = "auto",
-            solidHeader = TRUE,
-            collapsible = FALSE,
-            div(
-              h3("Detailed Species Occurrences Data"),
-              mod_table_ui("table_module")
-            )
-          )
-        )
-      )
-    )
-  )
+ui <- fluidPage(
+  useShinyjs(),
+  tags$style(type = "text/css", "
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+    }
+  "),
+  leafletOutput("map", width = "100%", height = "100%")
 )
