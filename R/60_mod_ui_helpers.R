@@ -1,4 +1,5 @@
 
+# ------ * Generate place holder for No Data -----------------------------------
 #' Include No Data placeholder
 #'
 #' This placeholder is used in place of charts when there is nothing to display
