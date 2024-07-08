@@ -18,7 +18,13 @@ mod_preprocess_server <- function(
   # ------ * Render Modal content ----------------------------------------------
   output$modal_ui <- renderUI({
     tagList(
-      p("Here, you can pre-process the 'occurences.csv' file through the countries."),
+      p(
+        "Here, you can pre-process the 'occurences.csv' file through the countries. ",
+        "Please don't exceed 5-10 big countries. Check ",
+        tags$a(href = "https://github.com/ahmedjoubest/Global-Biodiversity", 
+               target = "_blank", "the readme"),
+        " for more information about the performance."
+      ),
       pickerInput(ns("countries"), "Countries", 
                   choices = countries, 
                   selected = "PL",
