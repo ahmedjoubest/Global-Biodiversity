@@ -19,7 +19,7 @@ These features and the dashboard's visual appearance are demonstrated in the fol
 
 ## Performance Optimization Skill
 ### Data Handling
-- I basically used `data.table` for efficient data reading, writing, and processing. As my mentor used to say, in R shiny, every second matter 😊.
+- I basically used `data.table` for efficient data reading, writing, and processing. As my mentor used to say, in R shiny, every second matters 😊.
 - A pre-processing feature was added (button in the header), allowing users to limit data to specific countries of interest, reducing the need to load global data. Currently, The app is loading the data of Poland, but it could handle up to 2 millions rows, that's 10 to 15 medium countries.
 
 ### Caching
