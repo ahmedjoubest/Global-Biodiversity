@@ -28,7 +28,7 @@ These features and the dashboard's visual appearance are demonstrated in the fol
 ### Map Rendering
 - Since rendering 40 million points on a `leaflet` map is computationally intensive, especially for the client side, I Used pre-rendered tiles (images) directly from the server for rendering Leaflet maps, inspired by the [GBIF leaflet guide](https://data-blog.gbif.org/post/gbif-maps-api-using-r-and-leaflet/).
 - A proof of concept is deployed here: https://world.biodiversity-data.ahmedjou.com/. The code is accessible in the [world-data branch](https://github.com/ahmedjoubest/Global-Biodiversity/tree/world-data). I hosted this POC in a different app due to a lack of time to integrate it in the main app.
-- Currently, I can directly read the Tiles from the server where it's stored: https://map.ahmedjou.com/service?, and I managed to render all the data.
+- Currently, I can directly read the Tiles from the server where it's stored: https://map.ahmedjou.com/service, and I managed to render all the data.
 
 ``` R
 addWMSTiles(

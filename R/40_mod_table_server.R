@@ -10,7 +10,7 @@ mod_table_server <- function(
     
     # Modify the data table
     data[, occurrenceID := paste0(
-      "<a href=", occurrenceID, '" target="_blank" style="color:#0099f9;">',
+      "<a href=", occurrenceID, ' target="_blank" style="color:#0099f9;">',
       occurrenceID, "</a>"
     )]
     
