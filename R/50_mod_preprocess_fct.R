@@ -12,9 +12,10 @@ data_preprocess <- function(countries = "PL") {
   
   # Unix and Windows pre-processing command
   unix_cmd <- paste0(
-    "head -n 1 data/occurence.csv && grep -E ',(",
-    paste0(countries, collapse = "|"), "), ' data/occurence.csv"
+    "head -n 1 data/occurence.csv && grep -E ',\\s*(",
+    paste0(countries, collapse = "|"), ")\\s*,' data/occurence.csv"
   )
+  
   
   windows_cmd <- paste0(
     "powershell -Command \"Get-Content data\\occurence.csv -TotalCount 1\" && findstr \"",
