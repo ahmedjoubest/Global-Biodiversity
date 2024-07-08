@@ -48,11 +48,19 @@ mod_preprocess_server <- function(
       html = TRUE,
       size = 'm'
     )
+    
     # Data pre-processing function
     data_preprocess(input$countries)
+    
+    # Update the global enviremnent (quick fix)
+    occurences <<- fread("data/occurences_preprocessed.csv")
+    
     # Pop-up for successful pre-processing
     shinyalert(
-      text = p("The data has been successfully pre-processed. Please refresh the page.") |> as.character(),
+      text = p(
+        "The data has been successfully pre-processed. 
+        The page will be refreshed in 5 seconds..."
+      ) |> as.character(),
       type = "info",
       animation = "pop",
       showConfirmButton = TRUE,
@@ -62,6 +70,11 @@ mod_preprocess_server <- function(
       immediate = T,
       session = session
     )
+    
+    Sys.sleep(5)
+    
+    # Refresh page
+    session$reload()
   })
 })
 }

@@ -72,4 +72,5 @@ data_preprocess <- function(countries = "PL") {
   
   # write the preprocessed data
   fwrite(occurence_preprocessed_with_media, "data/occurences_preprocessed.csv")
+  
 }
