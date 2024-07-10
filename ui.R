@@ -32,7 +32,7 @@ ui <- dashboardPage(
                 class = "selector-text",
                 p(
                   "This dashboard visualizes", tags$b("biodiversity data"),
-                  " with a focus on species occurrences within a",
+                  "with a focus on species occurrences within a",
                   tags$b("selected area."), "It includes an",
                   "interactive map displaying the locations of",
                   "species occurrences, allowing users to explore",

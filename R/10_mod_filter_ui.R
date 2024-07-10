@@ -21,9 +21,6 @@ mod_filter_ui <- function(
         `actions-box` = TRUE,
         `selected-text-format` = "count",
         `count-selected-text` = "{0}/{1} species"
-      ),
-      choicesOpt = list(
-        content = stringr::str_trunc(species_name_choices, width = 38)
       )
     ),
     pickerInput(

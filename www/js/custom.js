@@ -1,4 +1,5 @@
 
+// Custom message handler for removing a leaflet layer
 Shiny.addCustomMessageHandler(
     'removeleaflet',
     function(x) {
@@ -12,34 +13,20 @@ Shiny.addCustomMessageHandler(
     }
   );
 
+// Function to set the width of pickerInput
 function setPickerWidth() {
-        $('.bootstrap-select .dropdown-menu').each(function() {
-          var picker = $(this).closest('.bootstrap-select');
-          var width = picker.width();
-          $(this).css('width', width + 'px');
-          $(this).css('min-width', 'auto'); // Explicitly remove min-width
-        });
-      }
-
-      // Run the function once on load
-      $(document).ready(function() {
-        setPickerWidth();
-      });
-
-      // Run the function on window resize
-      $(window).resize(function() {
-        setPickerWidth();
-      });
-
-      Shiny.addCustomMessageHandler('setPickerWidth', function(message) {
-        setPickerWidth();
-      });
-
-$(document).on("shiny:connected", function(e) {
-      Shiny.onInputChange("innerWidth", window.innerWidth);
+    $('.bootstrap-select .dropdown-menu').each(function() {
+        var picker = $(this).closest('.bootstrap-select');
+        var width = picker.width();
+        $(this).css('width', width + 'px');
+        $(this).css('min-width', 'auto');
     });
-    $(window).resize(function(e) {
-      Shiny.onInputChange("innerWidth", window.innerWidth);
-    });
-    
-    
+}
+// Run the function once on load
+$(document).ready(function() {
+    setPickerWidth();
+});
+// Run the function on window resize
+$(window).resize(function() {
+    setPickerWidth();
+});

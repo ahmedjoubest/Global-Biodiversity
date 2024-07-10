@@ -130,7 +130,7 @@ button {
 }
 
 /* HTML panel styling -*/
-/* #TODO: Avoid hard coding of the ns! -*/
+/* TODO: Avoid hard coding of the ns! -*/
 #map_module-html_panel {
   opacity: 0.45;
   transition: opacity 0.3s;
@@ -187,15 +187,31 @@ button {
   text-align: center;
   position: absolute;
   left: 50%;
+  transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  font-family: helvetica, arial, sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size:18px;
   color: #0275D8;
+  letter-spacing: 0.2em;
 
   &::before,
   &::after {
+    content: '';
     display: block;
     width: 15px;
     height: 15px;
     background: #0275D8;
     position: absolute;
+    animation: cssload-load 0.81s infinite alternate ease-in-out;
+    -o-animation: cssload-load 0.81s infinite alternate ease-in-out;
+    -ms-animation: cssload-load 0.81s infinite alternate ease-in-out;
+    -webkit-animation: cssload-load 0.81s infinite alternate ease-in-out;
+    -moz-animation: cssload-load 0.81s infinite alternate ease-in-out;
   }
 
   &::before {
@@ -204,6 +220,91 @@ button {
 
   &::after {
     bottom: 0;
+  }
+}
+
+@keyframes cssload-load {
+  0% {
+    left: 0;
+    height: 9px;
+    width: 350px;
+  }
+  50% {
+    height: 9px;
+    width: 350px;
+  }
+  100% {
+    left: 229px;
+    height: 9px;
+    width: 350px;
+  }
+}
+
+@-o-keyframes cssload-load {
+  0% {
+    left: 0;
+    height: 29px;
+    width: 15px;
+  }
+  50% {
+    height: 8px;
+    width: 39px;
+  }
+  100% {
+    left: 229px;
+    height: 29px;
+    width: 15px;
+  }
+}
+       
+@-ms-keyframes cssload-load {
+  0% {
+    left: 0;
+    height: 29px;
+    width: 15px;
+  }
+  50% {
+    height: 8px;
+    width: 39px;
+  }
+  100% {
+    left: 229px;
+    height: 29px;
+    width: 15px;
+  }
+}
+       
+@-webkit-keyframes cssload-load {
+  0% {
+    left: 0;
+    height: 29px;
+    width: 15px;
+  }
+  50% {
+    height: 8px;
+    width: 39px;
+  }
+  100% {
+    left: 229px;
+    height: 29px;
+    width: 15px;
+  }
+}
+       
+@-moz-keyframes cssload-load {
+  0% {
+    left: 0;
+    height: 29px;
+    width: 15px;
+  }
+  50% {
+    height: 8px;
+    width: 39px;
+  }
+  100% {
+    left: 229px;
+    height: 29px;
+    width: 15px;
   }
 }
 
@@ -224,8 +325,23 @@ button {
 
 /* Switch the positions of the download button and the data table filter */
 #table_module-download_data {
-  float: right !important; /* #TODO: Avoid hard coding of the ns! -*/
+  float: right !important; /* TODO: Avoid hard coding of the ns! -*/
 }
 .dataTables_filter {
   float: left !important;
+}
+
+/* Customize the appearance of The SelectInput's dropdown menu */
+.bootstrap-select {
+  .dropdown-menu {
+    width: 100% !important;
+  }
+  
+  .dropdown-menu li a span.text {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 90%;
+  }
 }
