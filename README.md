@@ -1,7 +1,5 @@
 
-# Homework Extra Assignments
-
-I covered all the extra assignments for the homework. The full assignment details can be found [here](https://docs.google.com/document/d/1E5DgNGL7cl6N1c1wMPmNggmGbRV-p1ySpL_Y-D4akOs/edit?usp=sharing).
+# Extra Assignments
 
 ## Infrastructure Skill
 I deployed the app on a shiny-server installed on my Debian instance. I used a reverse proxy to point to my DNS (quick method): https://biodiversity-data.ahmedjou.com/.
