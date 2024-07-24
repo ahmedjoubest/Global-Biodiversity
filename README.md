@@ -6,7 +6,7 @@ I deployed the app on a shiny-server installed on my Debian instance. I used a r
 
 ## JavaScript/UI Skill
 I used custom CSS to achieve the desired visual effect. Additionally, I implemented three trivial interactive features for the data visualization using JavaScript:
-1. **Data Filtering**: Users can filter displayed data by clicking on a specific month or year in the Highcharts bars or lines.
+1. **Data Filtering**: Users can filter displayed data by clicking on a specific month or year in the Highcharts bars or lines, using **JS callback functions**
 2. **Area Selection**: Users can draw an area on the map to get a list of all species in that area, along with pictures and the links of observations.
 3. **Area Filtering**: Users can filter data based on species in the selected areas.
 
