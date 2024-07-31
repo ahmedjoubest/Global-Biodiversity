@@ -34,10 +34,12 @@ mod_preprocess_server <- function(
                     `live-search` = TRUE
                   )
       ),
-      actionButton(
-        inputId = ns("update_countries"),
-        label = "Pre-process",
-        icon = icon("cogs")
+      shinyjs::disabled(
+        actionButton(
+          inputId = ns("update_countries"),
+          label = "Pre-process",
+          icon = icon("cogs")
+        )
       )
     )
   })

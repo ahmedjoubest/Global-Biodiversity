@@ -1,8 +1,9 @@
 
-# Extra Assignments
+# Features
 
 ## Infrastructure Skill
-I deployed the app on a shiny-server installed on my Debian instance. I used a reverse proxy to point to my DNS (quick method): https://biodiversity-data.ahmedjou.com/.
+- deploye the app on a shiny-server installed on my Debian instance. I used a reverse proxy to point to my DNS (quick method): https://ahmedjouworker.shinyapps.io/Global-Biodiversity/.
+
 
 ## JavaScript/UI Skill
 I used custom CSS to achieve the desired visual effect. Additionally, I implemented three trivial interactive features for the data visualization using JavaScript:
