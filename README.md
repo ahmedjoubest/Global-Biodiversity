@@ -1,12 +1,11 @@
 
 # Features
 
-## Infrastructure Skill
-- deploye the app on a shiny-server installed on my Debian instance. I used a reverse proxy to point to my DNS (quick method): https://ahmedjouworker.shinyapps.io/Global-Biodiversity/.
-
+## Infrastructure
+- deployed the app on a shiny-server installed on my Debian instance. I used a reverse proxy to point to my DNS (quick method): https://ahmedjouworker.shinyapps.io/Global-Biodiversity/.
 
 ## JavaScript/UI Skill
-I used custom CSS to achieve the desired visual effect. Additionally, I implemented three trivial interactive features for the data visualization using JavaScript:
+Used CSS to achieve the desired visual effect. Three trivial interactive features implemented for the data visualization using JavaScript:
 1. **Data Filtering**: Users can filter displayed data by clicking on a specific month or year in the Highcharts bars or lines, using **JS callback functions**
 2. **Area Selection**: Users can draw an area on the map to get a list of all species in that area, along with pictures and the links of observations.
 3. **Area Filtering**: Users can filter data based on species in the selected areas.
@@ -18,7 +17,7 @@ These features and the dashboard's visual appearance are demonstrated in the fol
 
 ## Performance Optimization Skill
 ### Data Handling
-- I basically used `data.table` for efficient data reading, writing, and processing. As my mentor used to say, in R shiny, every second matters 😊.
+- Used `data.table` for efficient data reading, writing, and processing. In a web app, every second matters 😊.
 - A pre-processing feature was added (button in the header), allowing users to limit data to specific countries of interest, reducing the need to load global data. Currently, The app is loading the data of Poland, but it could handle up to 2 millions rows, that's 10 to 15 medium countries.
 
 ### Caching
